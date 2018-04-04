@@ -125,7 +125,7 @@ class LogglyRender extends Component {
         {events.sort((a,b) => {
           const delta = get(a, this.state.sort, 0) - get(b, this.state.sort, 0);
           return this.state.sortDir === 'asc' ? delta : (-1 * delta);
-        }).map(row => <LogRow key={row.id} row={row} />)}
+        }).filter(row => row.logtypes.includes('json')).map(row => <LogRow key={row.id} row={row} />)}
       </div>
     );
   }
